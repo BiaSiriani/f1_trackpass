@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Emitir Nova Credencial - F1 TrackPass</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f9; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { color: #e10600; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn { background: #e10600; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-voltar { background: #6c757d; color: white; text-decoration: none; padding: 10px 15px; border-radius: 4px; display: inline-block; margin-left: 10px; }
+        .alert { background: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 15px; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🆔 Emitir Nova Credencial</h1>
+        <p>Preencha os dados do profissional para acesso ao autódromo.</p>
+        <hr>
+
+        <% if (erro) { %>
+            <div class="alert"><%= erro %></div>
+        <% } %>
+
+        <form action="/novo" method="POST">
+            <div class="form-group">
+                <label>Nome Completo:</label>
+                <input type="text" name="nome_completo" required placeholder="Ex: Lewis Hamilton">
+            </div>
+
+            <div class="form-group">
+                <label>Documento (Passaporte ou ID Fictício):</label>
+                <input type="text" name="documento" required placeholder="Ex: F1-PASS-044">
+            </div>
+
+            <div class="form-group">
+                <label>Função / Cargo:</label>
+                <input type="text" name="funcao" required placeholder="Ex: Engenheiro de Telemetria">
+            </div>
+
+            <div class="form-group">
+                <label>Equipe / Organização:</label>
+                <select name="organizacao_id" required>
+                    <option value="">Selecione a Equipe ou Mídia</option>
+                    <% organizacoes.forEach(o => { %>
+                        <option value="<%= o.id %>"><%= o.nome %> (<%= o.tipo %>)</option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Zona de Acesso Permitida:</label>
+                <select name="zona" required>
+                    <option value="Pit Lane / Paddock">Pit Lane / Paddock</option>
+                    <option value="Sala de Imprensa">Sala de Imprensa</option>
+                    <option value="Paddock Club VIP">Paddock Club VIP</option>
+                    <option value="Arquibancada Geral">Arquibancada Geral</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Salvar Credencial</button>
+            <a href="/" class="btn-voltar">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>
