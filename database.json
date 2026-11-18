@@ -1,0 +1,12 @@
+{
+  "organizacoes": [
+    { "id": 1, "nome": "Scuderia Ferrari", "tipo": "Equipe" },
+    { "id": 2, "nome": "Red Bull Racing", "tipo": "Equipe" },
+    { "id": 3, "nome": "Sky Sports F1", "tipo": "Imprensa" }
+  ],
+  "credenciados": [
+    { "id": 1, "nome": "Charles Leclerc", "documento": "F1-PASS-001", "funcao": "Piloto Oficial", "organizacao_id": 1, "zona": "Pit Lane / Paddock" },
+    { "id": 2, "nome": "Max Verstappen", "documento": "F1-PASS-002", "funcao": "Piloto Oficial", "organizacao_id": 2, "zona": "Pit Lane / Paddock" },
+    { "id": 3, "nome": "Martin Brundle", "documento": "F1-PRESS-101", "funcao": "Jornalista / Repórter", "organizacao_id": 3, "zona": "Sala de Imprensa" }
+  ]
+}
